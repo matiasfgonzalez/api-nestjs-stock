@@ -8,4 +8,6 @@
 
 - [x] Usar variables de entorno
 
-- [ ]Proteger API y rutas con JWT
+- [x] Proteger API y rutas con JWT
+
+- [x] Guardar los usuarios en la base de datos.
