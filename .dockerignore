@@ -1,0 +1,7 @@
+node_modules
+dist
+*.env_example
+.git
+
+pdf_chat
+db_scripts
