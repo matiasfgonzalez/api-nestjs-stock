@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: db-1
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: SuperSecret
+      POSTGRES_DB: stock_test
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - my_network
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    networks:
+      - my_network
+    ports:
+      - 8080:8080
+
+  api:
+    build: .
+    depends_on:
+      - db
+    networks:
+      - my_network
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:
+
+networks:
+  my_network:
